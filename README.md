@@ -1,6 +1,11 @@
 # GIF2CPP
 
+
+https://github.com/user-attachments/assets/4f943ac8-1f3c-4182-995d-1b76e4919106
+
+
 Convert GIF animations into C/C++ arrays for display on monochrome OLED/LCD screens.
+[Online use](#https://huykhong.com/IOT/gif2cpp/) <<<
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue?style=flat)&nbsp;![License](https://img.shields.io/badge/license-MIT-green?style=flat)
 
@@ -35,11 +40,11 @@ This project leverages [image2cpp](https://github.com/javl/image2cpp) and [libgi
 
 ## Key Features
 
-• Live preview of GIF frames in your browser
-• Threshold, scaling, inversion, flip, and rotation controls
-• Three drawing modes: `horizontal`, `vertical`, and `horizontal_bytes`
-• Export code in Arduino, plain C/C++, or ESP8266/ESP32 formats
-• One-click copy to clipboard or download as a `.h` header file
+-  Live preview of GIF frames in your browser
+-  Threshold, scaling, inversion, flip, and rotation controls
+-  Three drawing modes: `horizontal`, `vertical`, and `horizontal_bytes`
+-  Export code in Arduino, plain C/C++, or ESP8266/ESP32 formats
+-  One-click copy to clipboard or download as a `.h` header file
 
 --
 
@@ -136,6 +141,7 @@ void playGIFWithText(const AnimatedGIF* gif, const char* text, int textX, int te
 | Arduino      | `PROGMEM const uint8_t` arrays                     |
 | Plain C/C++  | `const uint8_t` arrays                             |
 | ESP32/ESP8266| `ICACHE_RODATA_ATTR` for flash-resident data       |
+|Header file | `PROGMEM const uint8_t` arrays  and structure in a .h file|
 
 ---
 
