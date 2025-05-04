@@ -77,6 +77,8 @@ This project leverages [image2cpp](https://github.com/javl/image2cpp) and [libgi
 • You can simply copy output code to use anywhere, there is a function comment out at the bottom of the code or:
 • Click **Save as .h** to download a header file containing
 • Then use this code to display gif which design to display many gif with one function:
+
+EXAMPLE USING ADAFRUIT LIBRARY
 ```cpp
 void playGIF(const AnimatedGIF* gif, uint16_t loopCount = 1) {
   for (uint16_t loop = 0; loop < loopCount; loop++) {
@@ -131,6 +133,35 @@ void playGIFWithText(const AnimatedGIF* gif, const char* text, int textX, int te
   }
 }
 
+```
+
+EXAMPLE USING u8G2 
+```
+void playGIF(const AnimatedGIF* gif, uint16_t loopCount = 1) {
+  for (uint16_t loop = 0; loop < loopCount; loop++) {
+    for (uint8_t frame = 0; frame < gif->frame_count; frame++) {
+      // Xóa buffer trước khi vẽ
+      u8g2.clearBuffer();
+
+      // Vẽ từng pixel
+      for (uint16_t y = 0; y < gif->height; y++) {
+        for (uint16_t x = 0; x < gif->width; x++) {
+          uint16_t byteIndex = y * (((gif->width + 7) / 8)) + (x / 8);
+          uint8_t  bitIndex  = 7 - (x % 8);
+          if (gif->frames[frame][byteIndex] & (1 << bitIndex)) {
+            u8g2.drawPixel(x, y);
+          }
+        }
+      }
+
+      // Đẩy buffer ra màn hình
+      u8g2.sendBuffer();
+
+      // Chờ theo delay của khung
+      delay(gif->delays[frame]);
+    }
+  }
+}
 ```
 ---
 
